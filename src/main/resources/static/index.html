@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Required meta tags always come first -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+
+
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/index.css" />
+</head>
+<body>
+	<script>
+		$(document).ready(function() {
+
+			$("#login").click(function() {
+				$.ajax({
+					url : "/login",
+					method : "POST",
+					data : JSON.stringify({
+						loginId : $("#inputId").val(),
+						password : $("#inputPassword").val()
+					})
+				});
+			});
+
+			$("#joinOk").click(function() {
+				
+				if($("#inputJoinPassword").val() != $("#inputJoinPasswordRe").val()) {
+					$("#inputJoinPasswordRe").addClass("form-control-danger");
+					return;
+				}
+				
+// 				$.ajax({
+// 					url: "/register",
+// 					method: "POST",
+// 					data: JSON.stringify({
+// 						loginId :  $("#inputJoinId").val(),
+// 						password : $("#inputJoinPassword").val(),
+// 						nickname : $("#inputJoinNickname").val()
+// 					})
+// 				});
+				
+// 				$("#joinModal").modal("hide");
+			});
+		});
+	</script>
+	<div class="site-wrapper">
+
+		<div class="site-wrapper-inner">
+
+			<div class="cover-container">
+				<div class="inner cover">
+					<div class="logo">
+						<img src="/img/zani.png" />
+					</div>
+					<form class="form-signin">
+						<label for="inputEmail" class="sr-only">아이디</label> <input
+							type="text" id="inputId" class="form-control" placeholder="아이디"
+							required autofocus> <label for="inputPassword"
+							class="sr-only">Password</label> <input type="password"
+							id="inputPassword" class="form-control" placeholder="비밀번호"
+							required>
+
+						<div class="button-wrap">
+							<button class="btn btn-lg btn-primary " id="login">로그인</button>
+							<button class="btn btn-lg btn-primary " id="join"
+								data-toggle="modal" data-target="#joinModal">회원가입</button>
+						</div>
+					</form>
+				</div>
+
+				<div class="mastfoot">
+					<div class="inner">
+						<p>REAL Copyright © All Rights Reserved.</p>
+					</div>
+				</div>
+			</div>
+
+			<!-- Modal -->
+			<div class="modal fade" id="joinModal" tabindex="-1" role="dialog"
+				aria-labelledby="myModalLabel">
+				<div class="modal-dialog modal-vertical-centered" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+							<h4 class="modal-title" id="myModalLabel">회원가입</h4>
+						</div>
+						<div class="modal-body">
+							<form class="form-signin">
+								<label for="inputJoinId" class="sr-only">아이디</label> 
+								<input type="text" id="inputJoinId" class="form-control" placeholder="아이디"
+									required autofocus>
+									 
+								<label for="inputJoinPassword"
+									class="sr-only">비밀번호</label> 
+								<input type="password"
+									id="inputJoinPassword" class="form-control" placeholder="비밀번호"
+									required>
+									
+								<label for="inputJoinPasswordRe"
+									class="sr-only">비밀번호 재입력</label> 
+								<input type="password"
+									id="inputJoinPasswordRe" class="form-control" placeholder="비밀번호 재입력"
+									required>
+									
+									
+								<label for="inputJoinNickname"
+									class="sr-only">닉네임</label> 
+								<input type="text"
+									id="inputJoinNickname" class="form-control" placeholder="닉네임"
+									required>
+									
+									
+
+							</form>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default"
+								data-dismiss="modal">닫기</button>
+							<button type="button" id="joinOk" class="btn btn-primary">가입</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+
+</body>
+</html>
